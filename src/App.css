@@ -1,0 +1,8 @@
+.error {
+    color: red;
+}
+
+.loading {
+    color: #ffae00;
+    font-style: italic;
+}
