@@ -5,6 +5,7 @@ export const AppContext = createContext({});
 
 export const AppContextProvider = ({ children }) => {
     const [query, setQuery] = useState('');
+    const [isTouched, setIsTouched] = useState(false)
     const [tracks, setTracks] = useState([]);
     const [artists, setArtists] = useState([]);
     // const [isLoading, setIsLoading] = useState(false);
@@ -12,8 +13,7 @@ export const AppContextProvider = ({ children }) => {
     const [error, setError] = useState({});
 
     useEffect(() => {
-        if (!query) {
-            // setIsLoading(false);
+        if (!query && isTouched) {
             setIsError(true);
             setError((prev) => ({
                 ...prev,
@@ -57,10 +57,12 @@ export const AppContextProvider = ({ children }) => {
                 artists,
                 tracks,
                 isError,
+                isTouched,
                 // isLoading,
                 error,
                 setQuery,
                 // setIsLoading,
+                setIsTouched,
             }}
         >
             {children}
